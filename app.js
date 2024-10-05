@@ -2,6 +2,12 @@ const express = require('express');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 
+// Import Routes
+const userRoutes = require('./routes/userRoutes');
+const customerRoutes = require('./routes/customerRoutes');
+const invoiceRoutes = require('./routes/invoiceRoutes');
+
+
 // Load environment variables
 dotenv.config();
 
@@ -14,6 +20,14 @@ const app = express();
 // Middleware to parse JSON
 app.use(express.json());
 
+
+// API Routes
+app.use('/api/users', userRoutes);
+app.use('/api/customers', customerRoutes);
+app.use('/api/invoices', invoiceRoutes);
+
+// Error handling middleware
+app.use(require('./middleware/errorHandler'));
 
 // Start server
 const PORT = process.env.PORT || 5000;
