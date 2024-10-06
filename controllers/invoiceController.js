@@ -4,8 +4,8 @@ const Customer = require('../models/Customer');
 // Get all invoices
 const getAllInvoices = async (req, res, next) => {
     try {
-        const invoices = await Invoice.find().populate('customer_id', 'name email');
-        res.status(200).json(invoices);
+        const invoices = await Invoice.find()//.populate('customer_id', 'name email');
+        res.status(200).send(invoices);
     } catch (error) {
         next(error);
     }
@@ -14,7 +14,7 @@ const getAllInvoices = async (req, res, next) => {
 // Get a single invoice by ID
 const getInvoiceById = async (req, res, next) => {
     try {
-        const invoice = await Invoice.findById(req.params.id).populate('customer_id', 'name email');
+        const invoice = await Invoice.findById(req.params.id)//.populate('customer_id', 'name email');
         if (!invoice) return res.status(404).json({ message: 'Invoice not found' });
         res.status(200).json(invoice);
     } catch (error) {
