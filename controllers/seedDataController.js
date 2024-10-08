@@ -81,7 +81,10 @@ async function seedRevenue() {
                 revenue: revenue.revenue
             })
         }
+        return null
     })
+    const insertedRevenues = await Promise.all(allRevenuesToSeed)
+    return insertedRevenues.filter(revenue => revenue !== null)
 }
 module.exports = async (req, res, next) => {
     try {
