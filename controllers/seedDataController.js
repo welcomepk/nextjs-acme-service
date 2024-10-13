@@ -30,7 +30,7 @@ async function seedCustomers() {
         const existingCustomer = await Customer.findOne({ id: customer.id })
         if (!existingCustomer) {
             return await Customer.create({
-                id: customer.id,
+                _id: customer.id,
                 name: customer.name,
                 email: customer.email,
                 image_url: customer.image_url

@@ -5,11 +5,17 @@ const {
     getInvoiceById,
     createInvoice,
     updateInvoice,
-    deleteInvoice
+    deleteInvoice,
+    getInvoiceStatusSummary,
+    getLatestInvoices
 } = require('../controllers/invoiceController');
 
 // GET /api/invoices - Fetch all invoices
 router.get('/', getAllInvoices);
+
+router.get('/latest', getLatestInvoices)
+
+router.get('/status-summary', getInvoiceStatusSummary)
 
 // GET /api/invoices/:id - Fetch an invoice by ID
 router.get('/:id', getInvoiceById);
@@ -22,5 +28,6 @@ router.put('/:id', updateInvoice);
 
 // DELETE /api/invoices/:id - Delete an invoice by ID
 router.delete('/:id', deleteInvoice);
+
 
 module.exports = router;

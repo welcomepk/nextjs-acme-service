@@ -6,6 +6,7 @@ const connectDB = require('./config/db');
 const userRoutes = require('./routes/userRoutes');
 const customerRoutes = require('./routes/customerRoutes');
 const invoiceRoutes = require('./routes/invoiceRoutes');
+const revenueRoutes = require('./routes/revenueRoutes');
 const seedDataController = require('./controllers/seedDataController')
 
 // Load environment variables
@@ -25,6 +26,7 @@ app.use(express.json());
 app.use('/api/users', userRoutes);
 app.use('/api/customers', customerRoutes);
 app.use('/api/invoices', invoiceRoutes);
+app.use('/api/revenues', revenueRoutes);
 app.get('/api/seed', seedDataController)
 
 // Error handling middleware
